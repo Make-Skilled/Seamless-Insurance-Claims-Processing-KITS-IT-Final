@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
+            background-image: url('img/Login.jpg'); /* Add your image path here */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 20px;
+        }
+
+        .auth-container {
+            width: 100%;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0); /* Make it slightly transparent to let the background image show through */
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: slideUp 0.5s ease-out;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: white;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 14px;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid rgba(255, 255, 255, 0);
+            border-radius: 8px;
+            outline: rgba(255, 255, 255, 0);
+            transition: border 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #0056b3;
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #0056b3;
+            color: #fff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .auth-btn:hover {
+            background-color: #0056b3;
+        }
+
+        .auth-footer {
+            text-align: center;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .auth-footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>Sign Up</h2>
+        </div>
+
+        <form>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" placeholder="Enter username" required>
+            </div>
+
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter email" required>
+            </div>
+
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+
+            <div class="input-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="confirm-password" placeholder="Confirm password" required>
+            </div>
+
+            <button type="submit" class="auth-btn">Sign Up</button>
+        </form>
+
+        <div class="auth-footer">
+            <p>Already have an account? <a href="login.html">Log In</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

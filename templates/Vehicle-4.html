@@ -1,0 +1,86 @@
+<?php
+session_start(); // Start the session for handling data persistently
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Process form submission
+    $policyID = trim($_POST['policy_id']);
+    $fullName = trim($_POST['full_name']);
+    $contactInfo = trim($_POST['contact_info']);
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload User Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(60deg, #3a9bdc, #cbb0b0);
+        }
+        .container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input[type="text"], 
+        input[type="file"] {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Upload User Details</h2>
+        <form action="" method="POST" enctype="multipart/form-data">
+            <label for="policy_id">Policy ID:</label>
+            <input type="text" id="policy_id" name="policy_id" placeholder="Enter the Policy ID" required>
+            
+            <label for="full_name">Full Name:</label>
+            <input type="text" id="full_name" name="full_name" placeholder="Enter Full Name" required>
+            
+            <label for="contact_info">Contact Info:</label>
+            <input type="text" id="contact_info" name="contact_info" placeholder="Enter Contact Info" required>
+            
+            <label for="user_photo">Upload Photo:</label>
+            <input type="file" id="user_photo" name="user_photo" accept="image/*" required>
+            
+            <button type="submit">Upload Details</button>
+        </form>
+    </div>
+</body>
+</html>
+
