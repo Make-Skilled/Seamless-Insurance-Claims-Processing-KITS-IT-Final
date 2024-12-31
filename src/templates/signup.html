@@ -1,84 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
     <style>
-        * {
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f0f2f5;
-            background-image: url('img/Login.jpg'); /* Add your image path here */
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            padding: 20px;
+            min-height: 100vh;
+            /* Use min-height for better responsiveness */
+            background: linear-gradient(60deg, #3a9bdc, #cbb0b0);
+            box-sizing: border-box;
+            /* Consistent box-sizing */
         }
 
-        .auth-container {
+        /* Header Styles */
+        .header {
             width: 100%;
-            max-width: 400px;
-            background-color: rgba(255, 255, 255, 0); /* Make it slightly transparent to let the background image show through */
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            animation: slideUp 0.5s ease-out;
+            background-color: #fff;
+            padding: 15px 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            /* Ensure it stays above other elements */
         }
 
-        .auth-header {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 24px;
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #0056b3;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand img {
+            width: 30px;
+            margin-right: 10px;
+        }
+
+        .navbar-nav {
+            display: flex;
+            gap: 20px;
+            /* Improved spacing between items */
+        }
+
+        .navbar-nav a {
+            text-decoration: none;
+            padding: 10px 20px;
+            color: #333;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .navbar-nav a:hover {
+            background-color: #0056b3;
             color: white;
         }
 
+        /* Auth Container Styles */
+        .auth-container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            margin-top: 150px;
+            /* Adjusted to avoid overlapping header */
+        }
+
+        .auth-header h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.8rem;
+            /* Adjusted font size */
+        }
+
         .input-group {
-            margin-bottom: 15px;
-            position: relative;
+            margin-bottom: 20px;
+            /* Increased spacing for better readability */
         }
 
         .input-group label {
             display: block;
-            font-size: 14px;
-            color: white;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            /* More space for labels */
+            font-size: 0.95rem;
+            /* Slightly larger for better readability */
+            color: #333;
         }
 
-        .input-group input {
+        .input-group input,
+        select {
             width: 100%;
             padding: 12px;
-            font-size: 16px;
-            border: 1px solid rgba(255, 255, 255, 0);
-            border-radius: 8px;
-            outline: rgba(255, 255, 255, 0);
-            transition: border 0.3s;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            box-sizing: border-box;
         }
 
-        .input-group input:focus {
-            border-color: #0056b3;
+        .input-group input:focus,
+        select:focus {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            /* Subtle focus effect */
         }
 
         .auth-btn {
             width: 100%;
             padding: 12px;
-            background-color: #0056b3;
-            color: #fff;
+            background-color: #007bff;
+            color: white;
             border: none;
-            border-radius: 8px;
-            font-size: 16px;
+            border-radius: 5px;
             cursor: pointer;
-            transition: background-color 0.3s ease;
+            font-size: 1.1rem;
+            transition: background-color 0.3s;
         }
 
         .auth-btn:hover {
@@ -87,62 +140,105 @@
 
         .auth-footer {
             text-align: center;
-            color: #fff;
             margin-top: 20px;
+            font-size: 0.9rem;
         }
 
         .auth-footer a {
-            color: #fff;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .auth-footer a:hover {
             text-decoration: underline;
         }
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(50px);
-                opacity: 0;
+        /* Responsive Design */
+        @media screen and (max-width: 480px) {
+            .navbar-nav {
+                display: none;
+                /* Hide navbar links for smaller screens */
             }
-            to {
-                transform: translateY(0);
-                opacity: 1;
+
+            .auth-container {
+                margin-top: 100px;
+                /* Adjust for smaller screens */
+                padding: 20px;
+                /* Smaller padding for limited space */
+            }
+
+            .header {
+                padding: 10px 15px;
+            }
+
+            .navbar-brand {
+                font-size: 1.3rem;
             }
         }
     </style>
 </head>
-<body>
 
+<body>
+    <!-- Header with Logo and Navigation Links -->
+    <div class="header">
+        <a href="index.html" class="navbar-brand">
+            <img src="static/img/icon/icon-02-primary.png" alt="Logo">
+            Insurance
+        </a>
+        <div class="navbar-nav">
+            <a href="index.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="service.html">Services</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Sign Up Form -->
     <div class="auth-container">
         <div class="auth-header">
             <h2>Sign Up</h2>
+            <span>{{message}}</span>
         </div>
 
-        <form>
+        <form action="/register" method="post">
+            <select id="role" name="role" required>
+                <option value="user">User</option>
+                <option value="hospital">Hospital</option>
+                <option value="police">Police</option>
+            </select>
+            <div class="input-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address" placeholder="Enter address" required>
+            </div>
             <div class="input-group">
                 <label for="username">Username</label>
-                <input type="text" id="username" placeholder="Enter username" required>
+                <input type="text" id="username" name="username" placeholder="Enter username" required>
             </div>
 
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" placeholder="Enter email" required>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
             </div>
 
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" placeholder="Enter password" required>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
             </div>
 
             <div class="input-group">
                 <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm password"
+                    required>
             </div>
 
             <button type="submit" class="auth-btn">Sign Up</button>
         </form>
 
         <div class="auth-footer">
-            <p>Already have an account? <a href="login.html">Log In</a></p>
+            <p>Already have an account? <a href="login">Log In</a></p>
         </div>
     </div>
 
 </body>
+
 </html>
