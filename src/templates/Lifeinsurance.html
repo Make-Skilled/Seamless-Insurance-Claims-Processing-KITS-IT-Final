@@ -7,25 +7,25 @@
   <style>
     /* General Styles */
     body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f1f3f5;
-  background: linear-gradient(60deg,#3a9bdc,#cbb0b0);
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
-}
-/* Header Style */
-.header {
+      font-family: 'Arial', sans-serif;
+      background-color: #f1f3f5;
+      background: linear-gradient(60deg, #3a9bdc, #cbb0b0);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    /* Header Style */
+    .header {
       width: 100%;
       background-color: #fff;
       padding: 15px 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       display: flex;
-      justify-content: space-between; /* Space between logo and links */
+      justify-content: space-between;
       align-items: center;
       position: fixed;
       top: 0;
@@ -189,17 +189,17 @@
    <!-- Header with Logo and Navigation Links -->
    <div class="header">
     <!-- Logo on the Left -->
-    <a href="index.html" class="navbar-brand">
-      <img src="static/img/icon/icon-02-primary.png" alt="Logo">
+    <a href="/" class="navbar-brand">
+      <img src="/static/img/icon/icon-02-primary.png" alt="Logo">
       Insurance
     </a>
 
     <!-- Navigation Links in the Center -->
     <div class="navbar-nav">
-      <a href="index.html">Home</a>
-      <a href="about.html">About Us</a>
-      <a href="service.html">Services</a>
-      <a href="contact.html">Contact Us</a>
+      <a href="/">Home</a>
+      <a href="/about">About Us</a>
+      <a href="/service">Services</a>
+      <a href="/contact">Contact Us</a>
     </div>
   </div>
 
@@ -240,7 +240,7 @@
 
   <!-- Form Section for User Details -->
   <div id="user-details" class="form-section">
-    <form action="process_upload.php" method="POST" enctype="multipart/form-data">
+    <form action="/upload/user-details" method="POST" enctype="multipart/form-data">
       <h4>User Details</h4>
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" placeholder="Enter your username" required><br>
@@ -260,7 +260,7 @@
 
   <!-- Form Section for Nominee Details -->
   <div id="nominee-details" class="form-section">
-    <form action="process_upload.php" method="POST" enctype="multipart/form-data">
+    <form action="/upload/nominee-details" method="POST" enctype="multipart/form-data">
       <h4>Nominee Details</h4>
       <label for="nominee-name">Nominee Name:</label>
       <input type="text" id="nominee-name" name="nominee_name" placeholder="Enter Nominee Name" required><br>
@@ -277,7 +277,7 @@
 
   <!-- Form Section for Bank Details -->
   <div id="bank-details" class="form-section">
-    <form action="process_upload.php" method="POST" enctype="multipart/form-data">
+    <form action="/upload/bank-details" method="POST" enctype="multipart/form-data">
       <h4>Bank Details</h4>
       <label for="bank-name">Bank Name:</label>
       <input type="text" id="bank-name" name="bank_name" placeholder="Enter Bank Name" required><br>
@@ -294,7 +294,7 @@
 
   <!-- Form Section for Certificate Upload -->
   <div id="certificate-upload" class="form-section">
-    <form action="process_upload.php" method="POST" enctype="multipart/form-data">
+    <form action="/upload/certificate-upload" method="POST" enctype="multipart/form-data">
       <h4>Certificate Upload</h4>
       <label for="policy-photo">Policy Paper Photo:</label>
       <input type="file" id="policy-photo" name="policy_photo" accept=".pdf,.jpg,.png" required><br>
