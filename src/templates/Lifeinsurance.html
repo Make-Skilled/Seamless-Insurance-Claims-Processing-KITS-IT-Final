@@ -138,7 +138,8 @@
     .form-section input[type="text"],
     .form-section input[type="number"],
     .form-section input[type="tel"],
-    .form-section input[type="file"] {
+    .form-section input[type="file"],
+    .form-section select {
       width: 100%;
       padding: 12px;
       margin-bottom: 15px;
@@ -153,7 +154,8 @@
     .form-section input[type="text"]:focus,
     .form-section input[type="number"]:focus,
     .form-section input[type="tel"]:focus,
-    .form-section input[type="file"]:focus {
+    .form-section input[type="file"]:focus,
+    .form-section select:focus {
       border-color: #4CAF50;
       outline: none;
     }
@@ -242,6 +244,16 @@
   <div id="user-details" class="form-section">
     <form action="/upload/user-details" method="POST" enctype="multipart/form-data">
       <h4>User Details</h4>
+      <label for="insurance-type">Insurance Type:</label>
+      <select id="insurance-type" name="insurance_type" required>
+        <option value="life">Life Insurance</option>
+        <option value="vehicle">Vehicle Insurance</option>
+        <option value="home">Home Insurance</option>
+        <option value="property">Property Insurance</option>
+        <option value="health">Health Insurance</option>
+        <option value="business">Business Insurance</option>
+      </select><br>
+
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" placeholder="Enter your username" required><br>
 

@@ -1,20 +1,9 @@
-<?php
-session_start(); // Start the session for handling data persistently
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Process form submission
-    $policyID = trim($_POST['policy_id']);
-    $fullName = trim($_POST['full_name']);
-    $contactInfo = trim($_POST['contact_info']);
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload User Details</title>
+    <title>Hospital Dashboard</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -65,7 +54,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
     <div class="container">
         <h2>Upload User Details</h2>
-        <form action="" method="POST" enctype="multipart/form-data">
+        <form action="/upload/hospital-details" method="POST" enctype="multipart/form-data">
             <label for="policy_id">Policy ID:</label>
             <input type="text" id="policy_id" name="policy_id" placeholder="Enter the Policy ID" required>
             

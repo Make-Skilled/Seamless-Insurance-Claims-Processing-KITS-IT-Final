@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <style>
+    /* General Body Styles */
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(60deg, #3a9bdc, #cbb0b0);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    h1, h2 {
+      color: #0056b3;
+      margin-top: 60px;
+      text-align: center;
+    }
+
+    h2 {
+      margin-top: 30px;
+      font-size: 1.4rem;
+    }
+
+    /* Error Message */
+    .error {
+      color: red;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    /* User Details Styles */
+    .user-details {
+      width: 80%;
+      max-width: 1000px;
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .user-details p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      margin-bottom: 10px;
+    }
+
+    .user-details p strong {
+      color: #007bff;
+    }
+
+    /* Table Styles */
+    table {
+      width: 100%;
+      margin-top: 30px;
+      border-collapse: collapse;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    table th,
+    table td {
+      padding: 12px 15px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    table td {
+      background-color: #f9f9f9;
+    }
+
+    table tr:nth-child(even) td {
+      background-color: #f1f1f1;
+    }
+
+    /* Action Button */
+    a {
+      text-decoration: none;
+      padding: 8px 12px;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    a:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    /* Back Button */
+    .back-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #28a745;
+      color: white;
+      border-radius: 5px;
+      text-align: center;
+      font-size: 16px;
+      cursor: pointer;
+      text-decoration: none;
+      margin-top: 30px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-button:hover {
+      background-color: #218838;
+    }
+
+    /* Container to center content */
+    .table-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px 0;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>User Details</h1>
+
+  <div class="table-container">
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <!-- User Details Section -->
+    <div class="user-details">
+      <h2>Basic Information</h2>
+      <p><strong>Policy Type:</strong> {{ user.policy_type }}</p>
+      <p><strong>Username:</strong> {{ user.username }}</p>
+      <p><strong>Policy ID:</strong> {{ user.policyId }}</p>
+      <p><strong>Aadhaar Number:</strong> {{ user.aadhaarNumber }}</p>
+      <p><strong>Phone Number:</strong> {{ user.phoneNumber }}</p>
+    </div>
+
+    <!-- Nominee Details Section -->
+    <div class="user-details">
+      <h2>Nominee Details</h2>
+      <p><strong>Nominee Name:</strong> {{ user.nominee_name }}</p>
+      <p><strong>Nominee Aadhaar:</strong> {{ user.nominee_aadhaar }}</p>
+      <p><strong>Nominee Phone:</strong> {{ user.nominee_phone }}</p>
+    </div>
+
+    <div class="user-details">
+        <h2>Bank Details</h2>
+        <p><strong>Bank Name:</strong> {{ user.bank_name }}</p>
+        <p><strong>Bank Account No:</strong> {{ user.bank_number }}</p>
+        <p><strong>Bank IFSC Code:</strong> {{ user.bank_ifsc }}</p>
+      </div>
+
+    <!-- Police Details Section -->
+    <div class="user-details">
+      <h2>Police Submission Details</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Policy ID</th>
+            <th>Full Name</th>
+            <th>Contact Info</th>
+            <th>Uploaded Photo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ user.policy_id }}</td>
+            <td>{{ user.full_name }}</td>
+            <td>{{ user.contact_info }}</td>
+            <td><a href="{{ user.user_photo }}" target="_blank">View Photo</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Hospital Details Section -->
+    <div class="user-details">
+      <h2>Hospital Submission Details</h2>
+      {% if user.hospital_details %}
+      <table>
+        <thead>
+          <tr>
+            <th>Policy ID</th>
+            <th>Patient Name</th>
+            <th>Contact Info</th>
+            <th>Medical Report</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for hospital in user.hospital_details %}
+          <tr>
+            <td>{{ hospital.policy_id }}</td>
+            <td>{{ hospital.patient_name }}</td>
+            <td>{{ hospital.contact_info }}</td>
+            <td><a href="{{ hospital.medical_report }}" target="_blank">View Report</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% else %}
+      <p>No hospital details available.</p>
+      {% endif %}
+    </div>
+
+    <!-- Back Button -->
+    <a href="{{ url_for('admin_home') }}" class="back-button">Back to Admin Home</a>
+
+  </div>
+
+</body>
+
+</html>
